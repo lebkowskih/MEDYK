@@ -22,7 +22,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm  ">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{asset('img/logo.png')}}" width="30" height="30">
                 </a>
@@ -45,7 +45,7 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Recepta </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item">Wystaw recepte</a>
+                                    <a class="dropdown-item" href="{{URL::to('/prescription/create')}}">Wystaw recepte</a>
                                 </div>
                         </li>
 
@@ -59,7 +59,7 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Recepta </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item">Sprwadź recepte</a>
+                                <a class="dropdown-item" href="{{URL::to('/prescription/show')}}">Sprwadź recepte</a>
                             </div>
                     </li>
 
