@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 use PDF;
+use Illuminate\Support\Facades\DB;
 
 
 class PrescriptionController extends Controller
@@ -26,7 +28,7 @@ class PrescriptionController extends Controller
         $user = Auth::user();
 
         $prescriptions = Prescription::all();
-        return view('prescription/index',['prescriptions'=>$prescriptions,'user'=>$user]);
+        return view('prescriptions/list',['prescriptions'=>$prescriptions,'user'=>$user]);
     }
 
     /**
@@ -37,7 +39,7 @@ class PrescriptionController extends Controller
     public function create()
     {
         $users = User::all();
-        return view('/prescription/create',['users'=>$users]);
+        return view('/prescriptions/create',['users'=>$users]);
     }
 
     /**
@@ -50,11 +52,16 @@ class PrescriptionController extends Controller
     {
         $user = User::find($request->input('user'));
         $data = $request->all();
+        $request->validate([
+            'medicine' =>['required']
+        ]);
 
         $prescription = new Prescription();
+        $prescription->fill(['code'=>rand(1000,9999)]);
         $prescription ->fill($data);
         $user->prescription()->save($prescription);
         $prescription->save();
+        return redirect ('/home');
     }
 
     /**
@@ -65,7 +72,8 @@ class PrescriptionController extends Controller
      */
     public function show($id)
     {
-        
+        $prescription = Prescription::find($id);
+        return view('prescriptions/show',['prescription'=>$prescription]);
     }
 
     /**
@@ -101,10 +109,13 @@ class PrescriptionController extends Controller
     {
         //
     }
-    public function pdf()
+
+    public function pdf($id)
     {
+        $prescription = Prescription::find($id);
+        $userList = DB::select('select distinct firstname,lastname from users join prescriptions on prescriptions.user_id=users.id where ?=prescriptions.user_id',[Auth::user()?->id]);
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML("siema");
+        $pdf->loadHTML(View::make('prescriptions/pdf',['prescription' => $prescription,'userList'=>$userList]));
         return $pdf->stream();
     }
 

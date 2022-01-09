@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -37,8 +37,8 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Pacjent </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item">Dodaj pacjenta</a>
-                                    <a class="dropdown-item">Edytuj pacjenta</a>
+                                    <a class="dropdown-item" href="{{url('patient/create')}}">Dodaj pacjenta</a>
+                                    <a class="dropdown-item" href="{{url('patient/edit')}}">Edytuj pacjenta</a>
                                 </div>
                         </li>
 
@@ -59,7 +59,7 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Recepta </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{URL::to('/prescription/show')}}">Sprwadź recepte</a>
+                                <a class="dropdown-item" href="{{URL::to('/prescription/')}}">Sprwadź recepte</a>
                             </div>
                     </li>
 
@@ -111,6 +111,17 @@
         </nav>
 
         <main>
+
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
             @yield('content')
         </main>
     </div>
