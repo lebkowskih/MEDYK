@@ -12,12 +12,12 @@
     <table class="table">
         <tr>
             <td>Przepisane lekarstwa</td>
-            <td> {{$prescriptions->medicine}} </td>
+            <td> {{$prescription->medicine}} </td>
         </tr>
 
         <tr>
             <td> Imie i nazwisko </td>
-            <td> {{$prescriptions->user_id}} </td>
+            <td> {{$prescription->user_id}} </td>
         </tr>
 
     </table>
