@@ -26,17 +26,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-Route::post('/patient/update/',[PatientController::class,'update']);
+Route::post('/patient/update/',[PatientController::class,'update'])->middleware(['verified','IsDoc']);
 
-Route::post('/patient/store',[PatientController::class,'store']);
+Route::post('/patient/store',[PatientController::class,'store'])->middleware(['verified','IsDoc']);
 
-Route::post('prescription/store',[PrescriptionController::class,'store'])->middleware('IsDoc');
+Route::post('prescription/store',[PrescriptionController::class,'store'])->middleware(['verified','IsDoc']);
 
-Route::get('/patient/create',[PatientController::class])->middleware('IsDoc');
+Route::get('/patient/create',[PatientController::class])->middleware(['verified','IsDoc']);
 
-Route::get('/prescription/create',[PatientController::class,'create'])->middleware('IsDoc');
+Route::get('/prescription/create',[PatientController::class,'create'])->middleware(['verified','IsDoc']);
 
-Route::get('/vaccination/create',[VaccinationController::class])->middleware('IsDoc');
+Route::get('/vaccination/create',[VaccinationController::class])->middleware(['verified','IsDoc']);
 
 Route::get('/prescription/pdf',[PrescriptionController::class,'pdf']);
 
@@ -44,9 +44,9 @@ Route::get('/prescription/show/{id}',[PrescriptionController::class,'show']);
 
 Route::get('/prescription/pdf/{id}',[PrescriptionController::class,'pdf']);
 
-Route::get('/patient/edit/',[PatientController::class,'edit'])->middleware('IsDoc');
+Route::get('/patient/edit/',[PatientController::class,'edit'])->middleware(['verified','IsDoc']);
 
 
-Route::resource('/patient',PatientController::class);
+Route::resource('/patient',PatientController::class)->middleware(['verified']);
 
-Route::resource('/prescription',PrescriptionController::class);
+Route::resource('/prescription',PrescriptionController::class)->middleware(['verified']);
