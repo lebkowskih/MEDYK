@@ -46,15 +46,22 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Recepta </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{URL::to('/prescription/create')}}">Wystaw recepte</a>
+                                    <a class="dropdown-item" href="{{URL::to('/prescription/')}}">Sprwadź recepte</a>
                                 </div>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Szczepienie </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item">Wprowadź termin</a>
+                                    <a class="dropdown-item" href="{{URL::to('vaccination/create')}}">Wprowadź termin</a>
+                                    <a class="dropdown-item" href="{{URL::to('vaccination/')}}">Zapisz się</a>
                                 </div>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{URL::to('contact')}}">Kontakt</a>
+                        </li>
+                        
                     @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Recepta </a>
@@ -66,7 +73,7 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Szczepienie </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item">Zapisz się</a>
+                                <a class="dropdown-item" href="{{URL::to('vaccination/')}}">Zapisz się</a>
                             </div>
                     </li>
                     @endif

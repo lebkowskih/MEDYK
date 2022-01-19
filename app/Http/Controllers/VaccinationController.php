@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Manufacturer;
+use App\Models\Vaccination;
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-class PatientController extends Controller
+
+class VaccinationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +18,8 @@ class PatientController extends Controller
      */
     public function index()
     {
+        $vaccinationsList = Vaccination::all(); 
+        return view('vaccination/index',['vaccinationsList' => $vaccinationsList]);
     }
 
     /**
@@ -24,7 +29,8 @@ class PatientController extends Controller
      */
     public function create()
     {
-        return view('patients/create');
+        $vaccinationsList = Vaccination::all();
+        return view('vaccination/create',['vaccinationsList'=>$vaccinationsList]);
     }
 
     /**
@@ -35,20 +41,15 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        /** 
-        $data = [
-            'firstname' => $request->input('firstname'),
-            'lastname' => $request->input("lastname"),
-            'birthday' => $request->input('birthday'),
-            'pesel' => Hash::make($request->input('pesel')),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
-        ];
-        $user = new User();
-        $user->fill($data);
-        $user->save();
-        */
+        $data = $request->all();
+        $request->validate([
+            'manufacturer' =>['required',], 
+            'date' =>['required']]);
 
+        $vaccination = new Vaccination();
+        $vaccination->fill($data);
+        $vaccination->save();
+        return redirect('/vaccination');
     }
 
     /**
@@ -68,10 +69,9 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        $usersList = User::all();
-        return view('/patients/edit',['userList'=>$usersList]);
+        //
     }
 
     /**
@@ -81,12 +81,9 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $user = User::find($request->input('user_id'));
-        $data = $request->all();
-        $user ->fill($data);
-        $user->save();        
+        //
     }
 
     /**
@@ -100,5 +97,16 @@ class PatientController extends Controller
         //
     }
 
-  
+    public function signin(Request $request)
+    {
+        $userid = Auth::user()->id;
+        $vaccinationid = $request->input("vaxid");
+        $updateDetails = ['user_id'=>$userid,"isAvailable"=> 0];
+
+        DB::table('vaccinations')
+           ->where('id',$vaccinationid)
+            ->update($updateDetails);
+        
+        return redirect ('vaccination');
+    }
 }

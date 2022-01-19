@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+
 
 class ContactController extends Controller
 {
@@ -13,7 +15,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $response = Http::get('api.openweathermap.org/data/2.5/weather?q=Kutno&appid=60e93791241cb8fbf544d69831664656');
+        $data = $response->body();
+        return view('contact/index',['data'=>$data]);
     }
 
     /**

@@ -50,4 +50,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function prescription(){
         return $this->hasMany('App\Models\Prescription');
     }
+    public function vaccination(){
+        return $this->hasOne('App\Models\Vaccination');
+    }
 }
