@@ -55,6 +55,8 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{URL::to('vaccination/create')}}">Wprowadź termin</a>
                                     <a class="dropdown-item" href="{{URL::to('vaccination/')}}">Zapisz się</a>
+                                    <a class="dropdown-item" href="{{URL::to('vaccination/ifu')}}">Sprwadź swoje szczepienia</a>
+
                                 </div>
                         </li>
 
@@ -74,6 +76,8 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Szczepienie </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{URL::to('vaccination/')}}">Zapisz się</a>
+                                <a class="dropdown-item" href="{{URL::to('vaccination/ifu')}}">Sprwadź swoje szczepienia</a>
+
                             </div>
                     </li>
                     @endif
@@ -81,6 +85,10 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a class="nav-link">Temperatura - {{Http::get('https://danepubliczne.imgw.pl/api/data/synop')[5]['temperatura'];}} stopni C</a>
+                        </li>
+
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">

@@ -109,4 +109,9 @@ class VaccinationController extends Controller
         
         return redirect ('vaccination');
     }
+
+    public function indexforuser(){
+        $vaccinationsList = Vaccination::all();
+        return view('vaccination/indexforuser',['vaccinationsList' => $vaccinationsList]);
+    }
 }

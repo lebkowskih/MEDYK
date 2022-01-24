@@ -1,14 +1,13 @@
 @extends('layouts.app')
 
 @section('title')   
-    Sprwadź Szczepienie
+    Kontakt
 @endsection 
 
 @section('content')
 
 <div class="container">
     <br>
-    {{$data}}
 </div>
 
 @endsection

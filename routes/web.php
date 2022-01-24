@@ -26,6 +26,8 @@ Auth::routes(['verify' =>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/vaccination/ifu',[VaccinationController::class,'indexforuser'])->middleware(['verified']);
+
 Route::get('/vaccination/create',[VaccinationController::class,'create'])->middleware(['verified','IsDoc']);
 
 Route::post('/vaccination/store',[VaccinationController::class,'store'])->middleware(['verified','IsDoc']);
