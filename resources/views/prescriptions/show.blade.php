@@ -15,10 +15,7 @@
             <td> {{$prescription->medicine}} </td>
         </tr>
 
-        <tr>
-            <td> Imie i nazwisko </td>
-            <td> {{$prescription->user_id}} </td>
-        </tr>
+
 
     </table>
 </div>

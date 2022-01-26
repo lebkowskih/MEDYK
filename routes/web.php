@@ -32,8 +32,6 @@ Route::get('/vaccination/create',[VaccinationController::class,'create'])->middl
 
 Route::post('/vaccination/store',[VaccinationController::class,'store'])->middleware(['verified','IsDoc']);
 
-Route::get('/contact',[ContactController::class,'index']);
-
 Route::post('/vaccination/signin',[VaccinationController::class,'signin'])->middleware('verified');
 
 Route::get('/vaccination',[VaccinationController::class,'index'])->middleware('verified');

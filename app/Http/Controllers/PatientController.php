@@ -86,7 +86,8 @@ class PatientController extends Controller
         $user = User::find($request->input('user_id'));
         $data = $request->all();
         $user ->fill($data);
-        $user->save();        
+        $user->save();   
+        return redirect ('/home');
     }
 
     /**
