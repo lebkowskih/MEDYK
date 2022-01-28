@@ -18,7 +18,7 @@ class CreateVaccinationsTable extends Migration
             $table->string('manufacturer');
             $table->dateTime('date');
             $table->integer('isAvailable')->default(1);
-            $table->unsignedInteger("user_id")->nullable();
+            $table->unsignedInteger("user_id")->nullable()->unique();
 
             $table->timestamps();
 

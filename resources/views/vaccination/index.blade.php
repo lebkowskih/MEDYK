@@ -10,7 +10,7 @@
     <br>
  
     @foreach($vaccinationsList  as $vaccination)
-    @if($vaccination?->isAvailable == 1)
+    @if($vaccination?->isAvailable == 1 )
     <form method="POST" action="{{URL::to('/vaccination/signin')}}">
       {{ csrf_field() }}
     <div class="card">

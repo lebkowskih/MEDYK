@@ -1,5 +1,10 @@
 @extends('layouts.app')
 @section('content')
+    @if($errors->any())
+    @endif
+
+
+
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -15,7 +20,7 @@
                 <img  src="{{asset('img/3.png')}}" class="img-fluid" >   
             </div>
         </div>
-    </div>
+    </div>  
 
     
     <div class="container">

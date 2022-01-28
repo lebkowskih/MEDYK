@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+Use Exception;
 use App\Models\Manufacturer;
 use App\Models\Vaccination;
 use Illuminate\Http\Request;
@@ -99,6 +100,7 @@ class VaccinationController extends Controller
 
     public function signin(Request $request)
     {
+        try{
         $userid = Auth::user()->id;
         $vaccinationid = $request->input("vaxid");
         $updateDetails = ['user_id'=>$userid,"isAvailable"=> 0];
@@ -106,8 +108,12 @@ class VaccinationController extends Controller
         DB::table('vaccinations')
            ->where('id',$vaccinationid)
             ->update($updateDetails);
-        
-        return redirect ('vaccination');
+        }
+        catch(Exception)
+        {
+            return redirect('home')->withErrors(['msg' => 'Nie można zapisać się dwa razy!']);  
+        }
+        return redirect('vaccination');
     }
 
     public function indexforuser(){

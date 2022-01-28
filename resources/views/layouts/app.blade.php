@@ -55,7 +55,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{URL::to('vaccination/create')}}">Wprowadź termin</a>
                                     <a class="dropdown-item" href="{{URL::to('vaccination/')}}">Zapisz się</a>
-                                    <a class="dropdown-item" href="{{URL::to('vaccination/ifu')}}">Sprwadź swoje szczepienia</a>
+                                    <a class="dropdown-item" href="{{URL::to('vaccination/ifu')}}">Sprawdź swoje szczepienia</a>
 
                                 </div>
                         </li>
@@ -66,7 +66,7 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Recepta </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{URL::to('/prescription/')}}">Sprwadź recepte</a>
+                                <a class="dropdown-item" href="{{URL::to('/prescription/')}}">Sprawdź recepte</a>
                             </div>
                     </li>
 
@@ -74,7 +74,7 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Szczepienie </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{URL::to('vaccination/')}}">Zapisz się</a>
-                                <a class="dropdown-item" href="{{URL::to('vaccination/ifu')}}">Sprwadź swoje szczepienia</a>
+                                <a class="dropdown-item" href="{{URL::to('vaccination/ifu')}}">Sprawdź swoje szczepienia</a>
 
                             </div>
                     </li>
@@ -109,7 +109,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Wyloguj') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
