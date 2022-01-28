@@ -46,7 +46,7 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Recepta </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{URL::to('/prescription/create')}}">Wystaw recepte</a>
-                                    <a class="dropdown-item" href="{{URL::to('/prescription/')}}">Sprwadź recepte</a>
+                                    <a class="dropdown-item" href="{{URL::to('/prescription/')}}">Sprawdź recepte</a>
                                 </div>
                         </li>
 
@@ -137,7 +137,7 @@
 
             @yield('content')
         </main>
-        <footer class="text-center text-white" style="background-color: #f1f1f1;">
+        <footer class="text-center text-white mt-3" style="background-color: #f1f1f1;">
             <!-- Grid container -->
             <div class="container pt-4">
               <!-- Section: Social media -->
