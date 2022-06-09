@@ -28,4 +28,13 @@ class UserTest extends TestCase
         $response = $this->get('/prescription/create');
         $response->assertStatus(302);
     }
+
+    public function test_unauth_cant_see_add_prescription_button(){
+        $response = $this->get('/');
+        $response->assertDontSee('Wystaw recepte');
+    }
+    public function test_auth_can_see_add_vaccination_button(){
+        $response = $this->get('/');
+        $response->assertDontSee('Wprowadź termin');
+    }
 }
