@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Prescription extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['medicine','user_id','expire_at','code'];
 
     public function user(){
